@@ -271,7 +271,7 @@ export default function ChatInput({
     null
   ) as React.RefObject<HTMLDivElement>;
   const intl = useIntl();
-  const { getProviders } = useConfig();
+  const { getProviders, read } = useConfig();
   const {
     getCurrentModelAndProvider,
     currentModel: configModel,
@@ -584,7 +584,20 @@ export default function ChatInput({
         return;
       }
 
-      // Priority 1: Check predefined models from environment
+      // Priority 1: GOOSE_CONTEXT_LIMIT from config/env — user explicit override
+      try {
+        const contextLimit = await read('GOOSE_CONTEXT_LIMIT', false);
+        if (contextLimit && Number(contextLimit) > 0) {
+          setTokenLimit(Number(contextLimit));
+          setIsTokenLimitLoaded(true);
+          return;
+        }
+      } catch (err) {
+        console.error('Failed to read GOOSE_CONTEXT_LIMIT from config:', err);
+        // continue to predefined/canonical
+      }
+
+      // Priority 2: Check predefined models from environment
       const predefinedModels = getPredefinedModelsFromEnv();
       const predefinedModel = predefinedModels.find((m) => m.name === model);
       if (predefinedModel?.context_limit) {
@@ -593,7 +606,7 @@ export default function ChatInput({
         return;
       }
 
-      // Priority 2: Check canonical model info (source of truth)
+      // Priority 3: Check canonical model info (source of truth)
       const canonicalInfo = await fetchCanonicalModelInfo(provider, model);
       if (canonicalInfo?.context_limit) {
         setTokenLimit(canonicalInfo.context_limit);
@@ -601,7 +614,7 @@ export default function ChatInput({
         return;
       }
 
-      // Priority 3: Fall back to provider metadata known_models (may be outdated)
+      // Priority 4: Fall back to provider metadata known_models (may be outdated)
       const providers = await getProviders(true);
       const currentProvider = providers.find((p) => p.name === provider);
       if (currentProvider?.metadata?.known_models) {
@@ -613,7 +626,7 @@ export default function ChatInput({
         }
       }
 
-      // Priority 4: Use default if nothing else found
+      // Priority 5: Use default if nothing else found
       setTokenLimit(TOKEN_LIMIT_DEFAULT);
       setIsTokenLimitLoaded(true);
     } catch (err) {
