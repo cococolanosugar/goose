@@ -4570,5 +4570,149 @@
   },
   "userMessage.forkSessionTitle": {
     "defaultMessage": "Cipta sesi baharu dengan mesej yang disunting"
+  },
+  "menu.aboutGoose": {
+    "defaultMessage": "Mengenai Goose"
+  },
+  "menu.addToDictionary": {
+    "defaultMessage": "Tambah ke kamus"
+  },
+  "menu.alwaysOnTop": {
+    "defaultMessage": "Sentiasa di Atas"
+  },
+  "menu.edit": {
+    "defaultMessage": "Edit"
+  },
+  "menu.file": {
+    "defaultMessage": "Fail"
+  },
+  "menu.find": {
+    "defaultMessage": "Cari"
+  },
+  "menu.findNext": {
+    "defaultMessage": "Cari Seterusnya"
+  },
+  "menu.findPrevious": {
+    "defaultMessage": "Cari Sebelumnya"
+  },
+  "menu.findWithEllipsis": {
+    "defaultMessage": "Cari…"
+  },
+  "menu.focusGooseWindow": {
+    "defaultMessage": "Fokus Tetingkap Goose"
+  },
+  "menu.help": {
+    "defaultMessage": "Bantuan"
+  },
+  "menu.newChat": {
+    "defaultMessage": "Sembang Baru"
+  },
+  "menu.newChatWindow": {
+    "defaultMessage": "Tetingkap Sembang Baru"
+  },
+  "menu.newWindow": {
+    "defaultMessage": "Tetingkap Baru"
+  },
+  "menu.openDirectory": {
+    "defaultMessage": "Buka Direktori..."
+  },
+  "menu.quickLauncher": {
+    "defaultMessage": "Pelancar Pantas"
+  },
+  "menu.recentDirectories": {
+    "defaultMessage": "Direktori Terkini"
+  },
+  "menu.role.close": {
+    "defaultMessage": "Tutup"
+  },
+  "menu.role.copy": {
+    "defaultMessage": "Salin"
+  },
+  "menu.role.cut": {
+    "defaultMessage": "Potong"
+  },
+  "menu.role.delete": {
+    "defaultMessage": "Padam"
+  },
+  "menu.role.forceReload": {
+    "defaultMessage": "Paksa Muat Semula"
+  },
+  "menu.role.front": {
+    "defaultMessage": "Bawa Semua ke Depan"
+  },
+  "menu.role.hide": {
+    "defaultMessage": "Sembunyikan Goose"
+  },
+  "menu.role.hideOthers": {
+    "defaultMessage": "Sembunyikan Lain"
+  },
+  "menu.role.minimize": {
+    "defaultMessage": "Minimumkan"
+  },
+  "menu.role.paste": {
+    "defaultMessage": "Tampal"
+  },
+  "menu.role.quit": {
+    "defaultMessage": "Keluar"
+  },
+  "menu.role.redo": {
+    "defaultMessage": "Buat semula"
+  },
+  "menu.role.reload": {
+    "defaultMessage": "Muat Semula"
+  },
+  "menu.role.resetZoom": {
+    "defaultMessage": "Saiz Sebenar"
+  },
+  "menu.role.selectAll": {
+    "defaultMessage": "Pilih Semua"
+  },
+  "menu.role.services": {
+    "defaultMessage": "Perkhidmatan"
+  },
+  "menu.role.startSpeaking": {
+    "defaultMessage": "Mula Bercakap"
+  },
+  "menu.role.stopSpeaking": {
+    "defaultMessage": "Berhenti Bercakap"
+  },
+  "menu.role.toggleDevTools": {
+    "defaultMessage": "Togol Alat Pembangun"
+  },
+  "menu.role.togglefullscreen": {
+    "defaultMessage": "Togol Skrin Penuh"
+  },
+  "menu.role.undo": {
+    "defaultMessage": "Buat asal"
+  },
+  "menu.role.unhide": {
+    "defaultMessage": "Tunjuk Semua"
+  },
+  "menu.role.zoom": {
+    "defaultMessage": "Zum"
+  },
+  "menu.role.zoomIn": {
+    "defaultMessage": "Zum Masuk"
+  },
+  "menu.role.zoomOut": {
+    "defaultMessage": "Zum Keluar"
+  },
+  "menu.settings": {
+    "defaultMessage": "Tetapan"
+  },
+  "menu.toggleNavigation": {
+    "defaultMessage": "Togol Navigasi"
+  },
+  "menu.useSelectionForFind": {
+    "defaultMessage": "Gunakan Pilihan untuk Cari"
+  },
+  "menu.view": {
+    "defaultMessage": "Lihat"
+  },
+  "menu.window": {
+    "defaultMessage": "Tetingkap"
+  },
+  "menu.role.pasteAndMatchStyle": {
+    "defaultMessage": "Tampal dan Padankan Gaya"
   }
 }

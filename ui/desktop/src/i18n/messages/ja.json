@@ -4570,5 +4570,149 @@
   },
   "userMessage.forkSessionTitle": {
     "defaultMessage": "編集したメッセージで新しいセッションを作成"
+  },
+  "menu.aboutGoose": {
+    "defaultMessage": "Goose について"
+  },
+  "menu.addToDictionary": {
+    "defaultMessage": "辞書に追加"
+  },
+  "menu.alwaysOnTop": {
+    "defaultMessage": "常に最前面に表示"
+  },
+  "menu.edit": {
+    "defaultMessage": "編集"
+  },
+  "menu.file": {
+    "defaultMessage": "ファイル"
+  },
+  "menu.find": {
+    "defaultMessage": "検索"
+  },
+  "menu.findNext": {
+    "defaultMessage": "次を検索"
+  },
+  "menu.findPrevious": {
+    "defaultMessage": "前を検索"
+  },
+  "menu.findWithEllipsis": {
+    "defaultMessage": "検索…"
+  },
+  "menu.focusGooseWindow": {
+    "defaultMessage": "Goose ウィンドウにフォーカス"
+  },
+  "menu.help": {
+    "defaultMessage": "ヘルプ"
+  },
+  "menu.newChat": {
+    "defaultMessage": "新しいチャット"
+  },
+  "menu.newChatWindow": {
+    "defaultMessage": "新しいチャットウィンドウ"
+  },
+  "menu.newWindow": {
+    "defaultMessage": "新しいウィンドウ"
+  },
+  "menu.openDirectory": {
+    "defaultMessage": "ディレクトリを開く..."
+  },
+  "menu.quickLauncher": {
+    "defaultMessage": "クイックランチャー"
+  },
+  "menu.recentDirectories": {
+    "defaultMessage": "最近使ったディレクトリ"
+  },
+  "menu.role.close": {
+    "defaultMessage": "閉じる"
+  },
+  "menu.role.copy": {
+    "defaultMessage": "コピー"
+  },
+  "menu.role.cut": {
+    "defaultMessage": "カット"
+  },
+  "menu.role.delete": {
+    "defaultMessage": "削除"
+  },
+  "menu.role.forceReload": {
+    "defaultMessage": "強制的に再読み込み"
+  },
+  "menu.role.front": {
+    "defaultMessage": "すべてを手前に移動"
+  },
+  "menu.role.hide": {
+    "defaultMessage": "Goose を隠す"
+  },
+  "menu.role.hideOthers": {
+    "defaultMessage": "ほかを隠す"
+  },
+  "menu.role.minimize": {
+    "defaultMessage": "最小化"
+  },
+  "menu.role.paste": {
+    "defaultMessage": "貼り付け"
+  },
+  "menu.role.quit": {
+    "defaultMessage": "終了"
+  },
+  "menu.role.redo": {
+    "defaultMessage": "やり直し"
+  },
+  "menu.role.reload": {
+    "defaultMessage": "再読み込み"
+  },
+  "menu.role.resetZoom": {
+    "defaultMessage": "実際のサイズ"
+  },
+  "menu.role.selectAll": {
+    "defaultMessage": "すべて選択"
+  },
+  "menu.role.services": {
+    "defaultMessage": "サービス"
+  },
+  "menu.role.startSpeaking": {
+    "defaultMessage": "読み上げを開始"
+  },
+  "menu.role.stopSpeaking": {
+    "defaultMessage": "読み上げを停止"
+  },
+  "menu.role.toggleDevTools": {
+    "defaultMessage": "デベロッパー ツールの切り替え"
+  },
+  "menu.role.togglefullscreen": {
+    "defaultMessage": "全画面表示の切り替え"
+  },
+  "menu.role.undo": {
+    "defaultMessage": "元に戻す"
+  },
+  "menu.role.unhide": {
+    "defaultMessage": "すべてを表示"
+  },
+  "menu.role.zoom": {
+    "defaultMessage": "ズーム"
+  },
+  "menu.role.zoomIn": {
+    "defaultMessage": "拡大"
+  },
+  "menu.role.zoomOut": {
+    "defaultMessage": "縮小"
+  },
+  "menu.settings": {
+    "defaultMessage": "設定"
+  },
+  "menu.toggleNavigation": {
+    "defaultMessage": "ナビゲーション切り替え"
+  },
+  "menu.useSelectionForFind": {
+    "defaultMessage": "選択範囲を検索"
+  },
+  "menu.view": {
+    "defaultMessage": "表示"
+  },
+  "menu.window": {
+    "defaultMessage": "ウィンドウ"
+  },
+  "menu.role.pasteAndMatchStyle": {
+    "defaultMessage": "スタイルを合わせてペースト"
   }
 }

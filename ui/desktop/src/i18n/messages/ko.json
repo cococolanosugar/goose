@@ -4570,5 +4570,149 @@
   },
   "userMessage.forkSessionTitle": {
     "defaultMessage": "편집한 메시지로 새 세션 만들기"
+  },
+  "menu.aboutGoose": {
+    "defaultMessage": "Goose 정보"
+  },
+  "menu.addToDictionary": {
+    "defaultMessage": "사전에 추가"
+  },
+  "menu.alwaysOnTop": {
+    "defaultMessage": "항상 위에 표시"
+  },
+  "menu.edit": {
+    "defaultMessage": "편집"
+  },
+  "menu.file": {
+    "defaultMessage": "파일"
+  },
+  "menu.find": {
+    "defaultMessage": "찾기"
+  },
+  "menu.findNext": {
+    "defaultMessage": "다음 찾기"
+  },
+  "menu.findPrevious": {
+    "defaultMessage": "이전 찾기"
+  },
+  "menu.findWithEllipsis": {
+    "defaultMessage": "찾기…"
+  },
+  "menu.focusGooseWindow": {
+    "defaultMessage": "Goose 창 포커스"
+  },
+  "menu.help": {
+    "defaultMessage": "도움말"
+  },
+  "menu.newChat": {
+    "defaultMessage": "새 채팅"
+  },
+  "menu.newChatWindow": {
+    "defaultMessage": "새 채팅 창"
+  },
+  "menu.newWindow": {
+    "defaultMessage": "새 창"
+  },
+  "menu.openDirectory": {
+    "defaultMessage": "디렉토리 열기..."
+  },
+  "menu.quickLauncher": {
+    "defaultMessage": "빠른 실행기"
+  },
+  "menu.recentDirectories": {
+    "defaultMessage": "최근 디렉토리"
+  },
+  "menu.role.close": {
+    "defaultMessage": "닫기"
+  },
+  "menu.role.copy": {
+    "defaultMessage": "복사"
+  },
+  "menu.role.cut": {
+    "defaultMessage": "잘라내기"
+  },
+  "menu.role.delete": {
+    "defaultMessage": "삭제"
+  },
+  "menu.role.forceReload": {
+    "defaultMessage": "강제 다시 로드"
+  },
+  "menu.role.front": {
+    "defaultMessage": "모두 앞으로 가져오기"
+  },
+  "menu.role.hide": {
+    "defaultMessage": "Goose 숨기기"
+  },
+  "menu.role.hideOthers": {
+    "defaultMessage": "다른 항목 숨기기"
+  },
+  "menu.role.minimize": {
+    "defaultMessage": "최소화"
+  },
+  "menu.role.paste": {
+    "defaultMessage": "붙여넣기"
+  },
+  "menu.role.quit": {
+    "defaultMessage": "종료"
+  },
+  "menu.role.redo": {
+    "defaultMessage": "다시 실행"
+  },
+  "menu.role.reload": {
+    "defaultMessage": "다시 로드"
+  },
+  "menu.role.resetZoom": {
+    "defaultMessage": "실제 크기"
+  },
+  "menu.role.selectAll": {
+    "defaultMessage": "모두 선택"
+  },
+  "menu.role.services": {
+    "defaultMessage": "서비스"
+  },
+  "menu.role.startSpeaking": {
+    "defaultMessage": "음성 입력 시작"
+  },
+  "menu.role.stopSpeaking": {
+    "defaultMessage": "음성 입력 중지"
+  },
+  "menu.role.toggleDevTools": {
+    "defaultMessage": "개발자 도구 전환"
+  },
+  "menu.role.togglefullscreen": {
+    "defaultMessage": "전체 화면 전환"
+  },
+  "menu.role.undo": {
+    "defaultMessage": "실행 취소"
+  },
+  "menu.role.unhide": {
+    "defaultMessage": "모두 표시"
+  },
+  "menu.role.zoom": {
+    "defaultMessage": "확대"
+  },
+  "menu.role.zoomIn": {
+    "defaultMessage": "확대"
+  },
+  "menu.role.zoomOut": {
+    "defaultMessage": "축소"
+  },
+  "menu.settings": {
+    "defaultMessage": "설정"
+  },
+  "menu.toggleNavigation": {
+    "defaultMessage": "내비게이션 전환"
+  },
+  "menu.useSelectionForFind": {
+    "defaultMessage": "선택 항목으로 찾기"
+  },
+  "menu.view": {
+    "defaultMessage": "보기"
+  },
+  "menu.window": {
+    "defaultMessage": "창"
+  },
+  "menu.role.pasteAndMatchStyle": {
+    "defaultMessage": "스타일 일치하여 붙여넣기"
   }
 }

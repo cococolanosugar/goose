@@ -4570,5 +4570,149 @@
   },
   "userMessage.forkSessionTitle": {
     "defaultMessage": "Tạo một phiên làm việc mới với tin nhắn đã chỉnh sửa"
+  },
+  "menu.aboutGoose": {
+    "defaultMessage": "Giới thiệu Goose"
+  },
+  "menu.addToDictionary": {
+    "defaultMessage": "Thêm vào từ điển"
+  },
+  "menu.alwaysOnTop": {
+    "defaultMessage": "Luôn ở trên cùng"
+  },
+  "menu.edit": {
+    "defaultMessage": "Sửa"
+  },
+  "menu.file": {
+    "defaultMessage": "Tệp"
+  },
+  "menu.find": {
+    "defaultMessage": "Tìm"
+  },
+  "menu.findNext": {
+    "defaultMessage": "Tìm tiếp"
+  },
+  "menu.findPrevious": {
+    "defaultMessage": "Tìm trước"
+  },
+  "menu.findWithEllipsis": {
+    "defaultMessage": "Tìm…"
+  },
+  "menu.focusGooseWindow": {
+    "defaultMessage": "Tập trung vào cửa sổ Goose"
+  },
+  "menu.help": {
+    "defaultMessage": "Trợ giúp"
+  },
+  "menu.newChat": {
+    "defaultMessage": "Trò chuyện mới"
+  },
+  "menu.newChatWindow": {
+    "defaultMessage": "Cửa sổ trò chuyện mới"
+  },
+  "menu.newWindow": {
+    "defaultMessage": "Cửa sổ mới"
+  },
+  "menu.openDirectory": {
+    "defaultMessage": "Mở thư mục..."
+  },
+  "menu.quickLauncher": {
+    "defaultMessage": "Khởi động nhanh"
+  },
+  "menu.recentDirectories": {
+    "defaultMessage": "Thư mục gần đây"
+  },
+  "menu.role.close": {
+    "defaultMessage": "Đóng"
+  },
+  "menu.role.copy": {
+    "defaultMessage": "Sao chép"
+  },
+  "menu.role.cut": {
+    "defaultMessage": "Cắt"
+  },
+  "menu.role.delete": {
+    "defaultMessage": "Xóa"
+  },
+  "menu.role.forceReload": {
+    "defaultMessage": "Buộc tải lại"
+  },
+  "menu.role.front": {
+    "defaultMessage": "Đưa tất cả lên trước"
+  },
+  "menu.role.hide": {
+    "defaultMessage": "Ẩn Goose"
+  },
+  "menu.role.hideOthers": {
+    "defaultMessage": "Ẩn khác"
+  },
+  "menu.role.minimize": {
+    "defaultMessage": "Thu nhỏ"
+  },
+  "menu.role.paste": {
+    "defaultMessage": "Dán"
+  },
+  "menu.role.quit": {
+    "defaultMessage": "Thoát"
+  },
+  "menu.role.redo": {
+    "defaultMessage": "Làm lại"
+  },
+  "menu.role.reload": {
+    "defaultMessage": "Tải lại"
+  },
+  "menu.role.resetZoom": {
+    "defaultMessage": "Kích thước thực"
+  },
+  "menu.role.selectAll": {
+    "defaultMessage": "Chọn tất cả"
+  },
+  "menu.role.services": {
+    "defaultMessage": "Dịch vụ"
+  },
+  "menu.role.startSpeaking": {
+    "defaultMessage": "Bắt đầu đọc"
+  },
+  "menu.role.stopSpeaking": {
+    "defaultMessage": "Dừng đọc"
+  },
+  "menu.role.toggleDevTools": {
+    "defaultMessage": "Bật/tắt công cụ phát triển"
+  },
+  "menu.role.togglefullscreen": {
+    "defaultMessage": "Bật/tắt toàn màn hình"
+  },
+  "menu.role.undo": {
+    "defaultMessage": "Hoàn tác"
+  },
+  "menu.role.unhide": {
+    "defaultMessage": "Hiện tất cả"
+  },
+  "menu.role.zoom": {
+    "defaultMessage": "Thu phóng"
+  },
+  "menu.role.zoomIn": {
+    "defaultMessage": "Phóng to"
+  },
+  "menu.role.zoomOut": {
+    "defaultMessage": "Thu nhỏ"
+  },
+  "menu.settings": {
+    "defaultMessage": "Cài đặt"
+  },
+  "menu.toggleNavigation": {
+    "defaultMessage": "Chuyển đổi điều hướng"
+  },
+  "menu.useSelectionForFind": {
+    "defaultMessage": "Dùng lựa chọn để tìm"
+  },
+  "menu.view": {
+    "defaultMessage": "Xem"
+  },
+  "menu.window": {
+    "defaultMessage": "Cửa sổ"
+  },
+  "menu.role.pasteAndMatchStyle": {
+    "defaultMessage": "Dán và Khớp Kiểu"
   }
 }

@@ -4570,5 +4570,149 @@
   },
   "userMessage.forkSessionTitle": {
     "defaultMessage": "Создать новый сеанс с измененным сообщением"
+  },
+  "menu.aboutGoose": {
+    "defaultMessage": "О Goose"
+  },
+  "menu.addToDictionary": {
+    "defaultMessage": "Добавить в словарь"
+  },
+  "menu.alwaysOnTop": {
+    "defaultMessage": "Поверх всех окон"
+  },
+  "menu.edit": {
+    "defaultMessage": "Правка"
+  },
+  "menu.file": {
+    "defaultMessage": "Файл"
+  },
+  "menu.find": {
+    "defaultMessage": "Найти"
+  },
+  "menu.findNext": {
+    "defaultMessage": "Найти следующее"
+  },
+  "menu.findPrevious": {
+    "defaultMessage": "Найти предыдущее"
+  },
+  "menu.findWithEllipsis": {
+    "defaultMessage": "Найти…"
+  },
+  "menu.focusGooseWindow": {
+    "defaultMessage": "Фокус на окно Goose"
+  },
+  "menu.help": {
+    "defaultMessage": "Справка"
+  },
+  "menu.newChat": {
+    "defaultMessage": "Новый чат"
+  },
+  "menu.newChatWindow": {
+    "defaultMessage": "Новое окно чата"
+  },
+  "menu.newWindow": {
+    "defaultMessage": "Новое окно"
+  },
+  "menu.openDirectory": {
+    "defaultMessage": "Открыть каталог..."
+  },
+  "menu.quickLauncher": {
+    "defaultMessage": "Быстрый запуск"
+  },
+  "menu.recentDirectories": {
+    "defaultMessage": "Недавние каталоги"
+  },
+  "menu.role.close": {
+    "defaultMessage": "Закрыть"
+  },
+  "menu.role.copy": {
+    "defaultMessage": "Копировать"
+  },
+  "menu.role.cut": {
+    "defaultMessage": "Вырезать"
+  },
+  "menu.role.delete": {
+    "defaultMessage": "Удалить"
+  },
+  "menu.role.forceReload": {
+    "defaultMessage": "Принудительная перезагрузка"
+  },
+  "menu.role.front": {
+    "defaultMessage": "Все окна на передний план"
+  },
+  "menu.role.hide": {
+    "defaultMessage": "Скрыть Goose"
+  },
+  "menu.role.hideOthers": {
+    "defaultMessage": "Скрыть остальные"
+  },
+  "menu.role.minimize": {
+    "defaultMessage": "Свернуть"
+  },
+  "menu.role.paste": {
+    "defaultMessage": "Вставить"
+  },
+  "menu.role.quit": {
+    "defaultMessage": "Выход"
+  },
+  "menu.role.redo": {
+    "defaultMessage": "Повторить"
+  },
+  "menu.role.reload": {
+    "defaultMessage": "Перезагрузить"
+  },
+  "menu.role.resetZoom": {
+    "defaultMessage": "Реальный размер"
+  },
+  "menu.role.selectAll": {
+    "defaultMessage": "Выбрать всё"
+  },
+  "menu.role.services": {
+    "defaultMessage": "Сервисы"
+  },
+  "menu.role.startSpeaking": {
+    "defaultMessage": "Начать чтение"
+  },
+  "menu.role.stopSpeaking": {
+    "defaultMessage": "Остановить чтение"
+  },
+  "menu.role.toggleDevTools": {
+    "defaultMessage": "Переключить инструменты разработчика"
+  },
+  "menu.role.togglefullscreen": {
+    "defaultMessage": "Полноэкранный режим"
+  },
+  "menu.role.undo": {
+    "defaultMessage": "Отменить"
+  },
+  "menu.role.unhide": {
+    "defaultMessage": "Показать всё"
+  },
+  "menu.role.zoom": {
+    "defaultMessage": "Масштаб"
+  },
+  "menu.role.zoomIn": {
+    "defaultMessage": "Увеличить"
+  },
+  "menu.role.zoomOut": {
+    "defaultMessage": "Уменьшить"
+  },
+  "menu.settings": {
+    "defaultMessage": "Настройки"
+  },
+  "menu.toggleNavigation": {
+    "defaultMessage": "Переключить навигацию"
+  },
+  "menu.useSelectionForFind": {
+    "defaultMessage": "Использовать выбор для поиска"
+  },
+  "menu.view": {
+    "defaultMessage": "Вид"
+  },
+  "menu.window": {
+    "defaultMessage": "Окно"
+  },
+  "menu.role.pasteAndMatchStyle": {
+    "defaultMessage": "Вставить и сопоставить стиль"
   }
 }

@@ -4570,5 +4570,149 @@
   },
   "userMessage.forkSessionTitle": {
     "defaultMessage": "以編輯後的訊息建立新的工作階段"
+  },
+  "menu.aboutGoose": {
+    "defaultMessage": "關於 Goose"
+  },
+  "menu.addToDictionary": {
+    "defaultMessage": "新增至字典"
+  },
+  "menu.alwaysOnTop": {
+    "defaultMessage": "視窗置頂"
+  },
+  "menu.edit": {
+    "defaultMessage": "編輯"
+  },
+  "menu.file": {
+    "defaultMessage": "檔案"
+  },
+  "menu.find": {
+    "defaultMessage": "尋找"
+  },
+  "menu.findNext": {
+    "defaultMessage": "尋找下一個"
+  },
+  "menu.findPrevious": {
+    "defaultMessage": "尋找上一個"
+  },
+  "menu.findWithEllipsis": {
+    "defaultMessage": "尋找…"
+  },
+  "menu.focusGooseWindow": {
+    "defaultMessage": "聚焦 Goose 視窗"
+  },
+  "menu.help": {
+    "defaultMessage": "說明"
+  },
+  "menu.newChat": {
+    "defaultMessage": "新增聊天"
+  },
+  "menu.newChatWindow": {
+    "defaultMessage": "新增聊天視窗"
+  },
+  "menu.newWindow": {
+    "defaultMessage": "新增視窗"
+  },
+  "menu.openDirectory": {
+    "defaultMessage": "開啟目錄…"
+  },
+  "menu.quickLauncher": {
+    "defaultMessage": "快速啟動器"
+  },
+  "menu.recentDirectories": {
+    "defaultMessage": "最近的目錄"
+  },
+  "menu.role.close": {
+    "defaultMessage": "關閉"
+  },
+  "menu.role.copy": {
+    "defaultMessage": "複製"
+  },
+  "menu.role.cut": {
+    "defaultMessage": "剪下"
+  },
+  "menu.role.delete": {
+    "defaultMessage": "刪除"
+  },
+  "menu.role.forceReload": {
+    "defaultMessage": "強制重新載入"
+  },
+  "menu.role.front": {
+    "defaultMessage": "將全部移至最前"
+  },
+  "menu.role.hide": {
+    "defaultMessage": "隱藏 Goose"
+  },
+  "menu.role.hideOthers": {
+    "defaultMessage": "隱藏其他"
+  },
+  "menu.role.minimize": {
+    "defaultMessage": "最小化"
+  },
+  "menu.role.paste": {
+    "defaultMessage": "貼上"
+  },
+  "menu.role.quit": {
+    "defaultMessage": "結束"
+  },
+  "menu.role.redo": {
+    "defaultMessage": "重做"
+  },
+  "menu.role.reload": {
+    "defaultMessage": "重新載入"
+  },
+  "menu.role.resetZoom": {
+    "defaultMessage": "實際大小"
+  },
+  "menu.role.selectAll": {
+    "defaultMessage": "全選"
+  },
+  "menu.role.services": {
+    "defaultMessage": "服務"
+  },
+  "menu.role.startSpeaking": {
+    "defaultMessage": "開始朗讀"
+  },
+  "menu.role.stopSpeaking": {
+    "defaultMessage": "停止朗讀"
+  },
+  "menu.role.toggleDevTools": {
+    "defaultMessage": "切換開發者工具"
+  },
+  "menu.role.togglefullscreen": {
+    "defaultMessage": "切換全螢幕"
+  },
+  "menu.role.undo": {
+    "defaultMessage": "復原"
+  },
+  "menu.role.unhide": {
+    "defaultMessage": "顯示全部"
+  },
+  "menu.role.zoom": {
+    "defaultMessage": "縮放"
+  },
+  "menu.role.zoomIn": {
+    "defaultMessage": "放大"
+  },
+  "menu.role.zoomOut": {
+    "defaultMessage": "縮小"
+  },
+  "menu.settings": {
+    "defaultMessage": "設定"
+  },
+  "menu.toggleNavigation": {
+    "defaultMessage": "切換導覽"
+  },
+  "menu.useSelectionForFind": {
+    "defaultMessage": "用所選內容尋找"
+  },
+  "menu.view": {
+    "defaultMessage": "檢視"
+  },
+  "menu.window": {
+    "defaultMessage": "視窗"
+  },
+  "menu.role.pasteAndMatchStyle": {
+    "defaultMessage": "貼上並符合樣式"
   }
 }

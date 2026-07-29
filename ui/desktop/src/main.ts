@@ -1,4 +1,8 @@
-import type { OpenDialogOptions, OpenDialogReturnValue } from 'electron';
+import type {
+  MenuItemConstructorOptions,
+  OpenDialogOptions,
+  OpenDialogReturnValue,
+} from 'electron';
 import {
   app,
   App,
@@ -35,6 +39,8 @@ import log from './utils/logger';
 import { ensureWinShims } from './utils/winShims';
 import { addRecentDir, loadRecentDirs } from './utils/recentDirs';
 import { formatAppName, errorMessage, formatErrorForLogging } from './utils/conversionUtils';
+import { MENU_DEFAULTS, resolveMenuLocale } from './utils/menu';
+import { MENU_TRANSLATIONS } from './i18n/generated/menuTranslations';
 import { isRetiredGooseChatApp } from './utils/retiredApps';
 import type { Settings, SettingKey } from './utils/settings';
 import { defaultSettings, getKeyboardShortcuts } from './utils/settings';
@@ -64,109 +70,282 @@ function shouldSetupUpdater(): boolean {
 // =======================================================================
 // Native menu localization
 // -----------------------------------------------------------------------
-// Electron's main process can't use react-intl (which runs in the renderer),
-// so the native menu bar is translated here with a small hand-maintained
-// dictionary. Only Simplified Chinese is filled in right now; other locales
-// fall through to the original English labels. Keep the keys in sync with
-// the raw label strings used below.
+// The native menu bar is translated via a catalog generated at build time.
+// defineMessages feeds the formatjs extraction pipeline (pnpm i18n:extract);
+// i18n-compile.js generates menuTranslations.ts from the extracted messages.
+// The menu is rebuilt from a template every time the language changes.
 // =======================================================================
 
-const MENU_TRANSLATIONS_ZH_CN: Record<string, string> = {
-  // Top-level
-  File: '文件',
-  Edit: '编辑',
-  View: '视图',
-  Window: '窗口',
-  Help: '帮助',
-  // Context menu
-  'Add to dictionary': '添加到词典',
-  Cut: '剪切',
-  Copy: '复制',
-  Paste: '粘贴',
-  // Goose-added items
-  'New Window': '新建窗口',
-  Settings: '设置',
-  'Find…': '查找…',
-  'Find Next': '查找下一个',
-  'Find Previous': '查找上一个',
-  'Use Selection for Find': '用所选内容查找',
-  Find: '查找',
-  'New Chat': '新建聊天',
-  'New Chat Window': '新建聊天窗口',
-  'Open Directory...': '打开目录…',
-  'Recent Directories': '最近的目录',
-  'Focus Goose Window': '聚焦 Goose 窗口',
-  'Quick Launcher': '快速启动器',
-  'Always on Top': '窗口置顶',
-  'Toggle Navigation': '切换导航',
-  'About Goose': '关于 Goose',
-  // Electron's default role-based labels we want to translate as well.
-  // (The menu role itself still provides the correct behaviour; only the
-  // display string is overridden.)
-  Undo: '撤销',
-  Redo: '重做',
-  'Select All': '全选',
-  Delete: '删除',
-  Speech: '语音',
-  Reload: '重新加载',
-  'Force Reload': '强制重新加载',
-  'Toggle Developer Tools': '切换开发者工具',
-  'Actual Size': '实际大小',
-  'Reset Zoom': '重置缩放',
-  'Zoom In': '放大',
-  'Zoom Out': '缩小',
-  'Toggle Full Screen': '切换全屏',
-  'Toggle Fullscreen': '切换全屏',
-  Minimize: '最小化',
-  Close: '关闭',
-  'Close Window': '关闭窗口',
-  Quit: '退出',
-  Exit: '退出',
-  'Bring All to Front': '全部置于最前',
-  'Emoji & Symbols': '表情符号',
-  'Start Dictation…': '开始听写…',
-  'Hide Goose': '隐藏 Goose',
-  'Hide Others': '隐藏其他',
-  'Show All': '全部显示',
-  Services: '服务',
-};
-
-function detectMenuLocale(): string {
-  return getConfiguredGooseLocale() ?? 'en';
+function menuT(key: string): string {
+  const locale = resolveMenuLocale(getConfiguredGooseLocale());
+  return MENU_TRANSLATIONS[locale]?.[key] ?? MENU_DEFAULTS[key] ?? key;
 }
 
-function menuT(label: string): string {
-  // Normalize underscores to hyphens so POSIX-style tags like "zh_CN" work.
-  const lower = detectMenuLocale().replace(/_/g, '-').toLowerCase();
-  const isTraditional = /^zh-(hant|tw|hk|mo)\b/.test(lower);
-  const isSimplifiedChinese = !isTraditional && (lower === 'zh' || lower.startsWith('zh-'));
-  if (isSimplifiedChinese) {
-    return MENU_TRANSLATIONS_ZH_CN[label] ?? label;
+function createApplicationMenuTemplate(t: (key: string) => string): MenuItemConstructorOptions[] {
+  const settings = getSettings();
+  const shortcuts = getKeyboardShortcuts(settings);
+  const template: MenuItemConstructorOptions[] = [];
+
+  // macOS app menu
+  if (process.platform === 'darwin') {
+    template.push({
+      role: 'appMenu',
+      submenu: [
+        { label: t('menu.aboutGoose'), role: 'about' },
+        { type: 'separator' },
+        ...(shortcuts.settings
+          ? [
+              {
+                label: t('menu.settings'),
+                accelerator: shortcuts.settings,
+                click: () => {
+                  const focusedWindow = BrowserWindow.getFocusedWindow();
+                  if (focusedWindow) focusedWindow.webContents.send('set-view', 'settings');
+                },
+              },
+            ]
+          : []),
+        { type: 'separator' },
+        { role: 'services' },
+        { type: 'separator' },
+        { role: 'hide' },
+        { role: 'hideOthers' },
+        { role: 'unhide' },
+        { type: 'separator' },
+        { role: 'quit' },
+      ],
+    });
   }
-  return label;
-}
 
-/**
- * Recursively translate `label` on every item in the given menu, including nested submenus.
- * Electron's default application menu comes with English labels that are not otherwise
- * configurable, so we post-process them here before calling `Menu.setApplicationMenu`.
- */
-function translateMenuLabels(items: MenuItem[]): void {
-  for (const item of items) {
-    if (item.label) {
-      const translated = menuT(item.label);
-      if (translated !== item.label) {
-        // MenuItem.label is a writable property on the main-process side, even though
-        // the TS type sometimes claims otherwise. Cast through unknown for safety.
-        (item as unknown as { label: string }).label = translated;
+  // File
+  const fileSubmenu: MenuItemConstructorOptions[] = [];
+  if (shortcuts.newChat) {
+    fileSubmenu.push({
+      label: t('menu.newChat'),
+      accelerator: shortcuts.newChat,
+      click: () => {
+        const focusedWindow = BrowserWindow.getFocusedWindow();
+        if (focusedWindow) focusedWindow.webContents.send('set-view', '');
+      },
+    });
+  }
+  if (shortcuts.newChatWindow) {
+    fileSubmenu.push({
+      label: t('menu.newChatWindow'),
+      accelerator: shortcuts.newChatWindow,
+      click: () => {
+        ipcMain.emit('create-chat-window');
+      },
+    });
+  }
+  if (shortcuts.openDirectory) {
+    fileSubmenu.push({
+      label: t('menu.openDirectory'),
+      accelerator: shortcuts.openDirectory,
+      click: () => openDirectoryDialog(),
+    });
+  }
+  const recentDirs = buildRecentFilesMenu();
+  if (recentDirs.length > 0) {
+    fileSubmenu.push({
+      label: t('menu.recentDirectories'),
+      submenu: recentDirs,
+    });
+  }
+  fileSubmenu.push({ type: 'separator' });
+
+  if (shortcuts.focusWindow) {
+    fileSubmenu.push({
+      label: t('menu.focusGooseWindow'),
+      accelerator: shortcuts.focusWindow,
+      click: () => focusWindow(),
+    });
+  }
+  if (shortcuts.quickLauncher) {
+    fileSubmenu.push({
+      label: t('menu.quickLauncher'),
+      accelerator: shortcuts.quickLauncher,
+      click: () => createLauncher(),
+    });
+  }
+  fileSubmenu.push({ type: 'separator' });
+  fileSubmenu.push({ role: 'close' });
+  if (process.platform !== 'darwin') {
+    fileSubmenu.push({ type: 'separator' }, { role: 'quit' });
+  }
+
+  template.push({ label: t('menu.file'), submenu: fileSubmenu });
+
+  // Edit
+  template.push({
+    label: t('menu.edit'),
+    submenu: [
+      { role: 'undo' },
+      { role: 'redo' },
+      { type: 'separator' },
+      { role: 'cut' },
+      { role: 'copy' },
+      { role: 'paste' },
+      ...(process.platform === 'darwin' ? [{ role: 'pasteAndMatchStyle' as const }] : []),
+      { role: 'delete' },
+      { role: 'selectAll' },
+      { type: 'separator' },
+      {
+        label: t('menu.find'),
+        submenu: [
+          {
+            label: t('menu.findWithEllipsis'),
+            accelerator: shortcuts.find ?? undefined,
+            click: () => {
+              const focusedWindow = BrowserWindow.getFocusedWindow();
+              if (focusedWindow) focusedWindow.webContents.send('find-command');
+            },
+          },
+          {
+            label: t('menu.findNext'),
+            accelerator: shortcuts.findNext ?? undefined,
+            click: () => {
+              const focusedWindow = BrowserWindow.getFocusedWindow();
+              if (focusedWindow) focusedWindow.webContents.send('find-next');
+            },
+          },
+          {
+            label: t('menu.findPrevious'),
+            accelerator: shortcuts.findPrevious ?? undefined,
+            click: () => {
+              const focusedWindow = BrowserWindow.getFocusedWindow();
+              if (focusedWindow) focusedWindow.webContents.send('find-previous');
+            },
+          },
+          {
+            label: t('menu.useSelectionForFind'),
+            accelerator: process.platform === 'darwin' ? 'Command+E' : undefined,
+            visible: process.platform === 'darwin',
+            click: () => {
+              const focusedWindow = BrowserWindow.getFocusedWindow();
+              if (focusedWindow) focusedWindow.webContents.send('use-selection-find');
+            },
+          },
+        ],
+      },
+      ...(process.platform === 'darwin'
+        ? [
+            { type: 'separator' as const },
+            { role: 'startSpeaking' as const },
+            { role: 'stopSpeaking' as const },
+          ]
+        : []),
+    ],
+  });
+
+  // View
+  const viewSubmenu: MenuItemConstructorOptions[] = [
+    { role: 'reload' },
+    { role: 'forceReload' },
+    { role: 'toggleDevTools' },
+    { type: 'separator' },
+    { role: 'resetZoom' },
+    { role: 'zoomIn' },
+    { role: 'zoomOut' },
+    { type: 'separator' },
+    { role: 'togglefullscreen' },
+  ];
+  if (shortcuts.toggleNavigation) {
+    viewSubmenu.push(
+      { type: 'separator' },
+      {
+        label: t('menu.toggleNavigation'),
+        accelerator: shortcuts.toggleNavigation,
+        click: () => {
+          const focusedWindow = BrowserWindow.getFocusedWindow();
+          if (focusedWindow) focusedWindow.webContents.send('toggle-navigation');
+        },
       }
+    );
+  }
+  template.push({ label: t('menu.view'), submenu: viewSubmenu });
+
+  // Window
+  const windowSubmenu: MenuItemConstructorOptions[] = [{ role: 'minimize' }];
+  if (process.platform === 'darwin') {
+    windowSubmenu.push({ role: 'zoom' });
+  }
+  if (shortcuts.alwaysOnTop) {
+    windowSubmenu.push(
+      { type: 'separator' },
+      {
+        label: t('menu.alwaysOnTop'),
+        type: 'checkbox',
+        checked: BrowserWindow.getFocusedWindow()?.isAlwaysOnTop() ?? false,
+        accelerator: shortcuts.alwaysOnTop,
+        click: (menuItem) => {
+          const focusedWindow = BrowserWindow.getFocusedWindow();
+          if (focusedWindow) {
+            const isAlwaysOnTop = menuItem.checked;
+            if (process.platform === 'darwin') {
+              focusedWindow.setAlwaysOnTop(isAlwaysOnTop, 'floating');
+            } else {
+              focusedWindow.setAlwaysOnTop(isAlwaysOnTop);
+            }
+          }
+        },
+      }
+    );
+  }
+  if (process.platform === 'darwin') {
+    windowSubmenu.push({ type: 'separator' }, { role: 'front' });
+  }
+  template.push({ label: t('menu.window'), submenu: windowSubmenu });
+
+  // Help (non-macOS only - macOS uses the app menu)
+  if (process.platform !== 'darwin') {
+    template.push({
+      label: t('menu.help'),
+      submenu: [
+        {
+          label: t('menu.aboutGoose'),
+          submenu: [{ label: `Version ${version || app.getVersion()}`, enabled: false }],
+        },
+      ],
+    });
+  }
+
+  return template;
+}
+
+function labelRoleItems(items: MenuItemConstructorOptions[], locale: string): void {
+  for (const item of items) {
+    if (item.role && !item.label && item.role !== 'appMenu') {
+      const key = `menu.role.${item.role}`;
+      const translated = MENU_TRANSLATIONS[locale]?.[key];
+      if (translated) item.label = translated;
     }
-    if (item.submenu && item.submenu.items) {
-      translateMenuLabels(item.submenu.items);
+    if (Array.isArray(item.submenu)) {
+      labelRoleItems(item.submenu, locale);
     }
   }
 }
 
+function buildDockMenu(t: (key: string) => string): void {
+  if (process.platform !== 'darwin') return;
+  app.dock?.setMenu(
+    Menu.buildFromTemplate([
+      {
+        label: t('menu.newWindow'),
+        click: () => createNewWindow(app),
+      },
+    ])
+  );
+}
+
+function buildApplicationMenu(): void {
+  const locale = resolveMenuLocale(getConfiguredGooseLocale());
+  const t = (key: string) => MENU_TRANSLATIONS[locale]?.[key] ?? MENU_DEFAULTS[key] ?? key;
+  const template = createApplicationMenuTemplate(t);
+  labelRoleItems(template, locale);
+  Menu.setApplicationMenu(Menu.buildFromTemplate(template));
+  buildDockMenu(t);
+}
 // Settings management
 const SETTINGS_FILE = path.join(app.getPath('userData'), 'settings.json');
 const STARTUP_LOGS_DIR = path.join(app.getPath('userData'), 'logs', 'startup');
@@ -1322,7 +1501,7 @@ const createChat = async (
       if (params.misspelledWord) {
         menu.append(
           new MenuItem({
-            label: menuT('Add to dictionary'),
+            label: menuT('menu.addToDictionary'),
             click: () =>
               mainWindow.webContents.session.addWordToSpellCheckerDictionary(params.misspelledWord),
           })
@@ -1336,14 +1515,14 @@ const createChat = async (
     if (params.selectionText) {
       menu.append(
         new MenuItem({
-          label: menuT('Cut'),
+          label: menuT('menu.role.cut'),
           accelerator: 'CmdOrCtrl+X',
           role: 'cut',
         })
       );
       menu.append(
         new MenuItem({
-          label: menuT('Copy'),
+          label: menuT('menu.role.copy'),
           accelerator: 'CmdOrCtrl+C',
           role: 'copy',
         })
@@ -1354,7 +1533,7 @@ const createChat = async (
     if (params.isEditable) {
       menu.append(
         new MenuItem({
-          label: menuT('Paste'),
+          label: menuT('menu.role.paste'),
           accelerator: 'CmdOrCtrl+V',
           role: 'paste',
         })
@@ -1963,11 +2142,13 @@ ipcMain.handle('set-setting', (_event, key: SettingKey, value: unknown) => {
 
   if (key === 'language') {
     appConfig.GOOSE_LOCALE = getConfiguredGooseLocale();
+    buildApplicationMenu();
   }
 
   // Re-register shortcuts if keyboard shortcuts changed
   if (key === 'keyboardShortcuts') {
     registerGlobalShortcuts();
+    buildApplicationMenu();
   }
 
   if (key === 'disableAutoDownload') {
@@ -2510,285 +2691,7 @@ async function appMain() {
     }
   }, 2000);
 
-  if (process.platform === 'darwin') {
-    const dockMenu = Menu.buildFromTemplate([
-      {
-        label: menuT('New Window'),
-        click: () => {
-          createNewWindow(app);
-        },
-      },
-    ]);
-    app.dock?.setMenu(dockMenu);
-  }
-
-  const menu = Menu.getApplicationMenu();
-
-  const shortcuts = getKeyboardShortcuts(settings);
-
-  const appMenu = menu?.items.find((item) => item.label === 'Goose');
-  if (appMenu?.submenu) {
-    appMenu.submenu.insert(1, new MenuItem({ type: 'separator' }));
-    if (shortcuts.settings) {
-      appMenu.submenu.insert(
-        1,
-        new MenuItem({
-          label: menuT('Settings'),
-          accelerator: shortcuts.settings,
-          click() {
-            const focusedWindow = BrowserWindow.getFocusedWindow();
-            if (focusedWindow) focusedWindow.webContents.send('set-view', 'settings');
-          },
-        })
-      );
-    }
-    appMenu.submenu.insert(1, new MenuItem({ type: 'separator' }));
-  }
-
-  const editMenu = menu?.items.find((item) => item.label === 'Edit');
-  if (editMenu?.submenu) {
-    const selectAllIndex = editMenu.submenu.items.findIndex((item) => item.label === 'Select All');
-
-    const findSubmenu = Menu.buildFromTemplate([
-      {
-        label: menuT('Find…'),
-        accelerator: shortcuts.find || undefined,
-        click() {
-          const focusedWindow = BrowserWindow.getFocusedWindow();
-          if (focusedWindow) focusedWindow.webContents.send('find-command');
-        },
-      },
-      {
-        label: menuT('Find Next'),
-        accelerator: shortcuts.findNext || undefined,
-        click() {
-          const focusedWindow = BrowserWindow.getFocusedWindow();
-          if (focusedWindow) focusedWindow.webContents.send('find-next');
-        },
-      },
-      {
-        label: menuT('Find Previous'),
-        accelerator: shortcuts.findPrevious || undefined,
-        click() {
-          const focusedWindow = BrowserWindow.getFocusedWindow();
-          if (focusedWindow) focusedWindow.webContents.send('find-previous');
-        },
-      },
-      {
-        label: menuT('Use Selection for Find'),
-        accelerator: process.platform === 'darwin' ? 'Command+E' : undefined,
-        click() {
-          const focusedWindow = BrowserWindow.getFocusedWindow();
-          if (focusedWindow) focusedWindow.webContents.send('use-selection-find');
-        },
-        visible: process.platform === 'darwin', // Only show on Mac
-      },
-    ]);
-
-    editMenu.submenu.insert(
-      selectAllIndex + 1,
-      new MenuItem({
-        label: menuT('Find'),
-        submenu: findSubmenu,
-      })
-    );
-  }
-
-  const fileMenu = menu?.items.find((item) => item.label === 'File');
-
-  if (fileMenu?.submenu) {
-    // Use a counter to track the actual insertion index
-    let menuIndex = 0;
-
-    if (shortcuts.newChat) {
-      fileMenu.submenu.insert(
-        menuIndex++,
-        new MenuItem({
-          label: menuT('New Chat'),
-          accelerator: shortcuts.newChat,
-          click() {
-            const focusedWindow = BrowserWindow.getFocusedWindow();
-            if (focusedWindow) focusedWindow.webContents.send('set-view', '');
-          },
-        })
-      );
-    }
-
-    if (shortcuts.newChatWindow) {
-      fileMenu.submenu.insert(
-        menuIndex++,
-        new MenuItem({
-          label: menuT('New Chat Window'),
-          accelerator: shortcuts.newChatWindow,
-          click() {
-            ipcMain.emit('create-chat-window');
-          },
-        })
-      );
-    }
-
-    if (shortcuts.openDirectory) {
-      fileMenu.submenu.insert(
-        menuIndex++,
-        new MenuItem({
-          label: menuT('Open Directory...'),
-          accelerator: shortcuts.openDirectory,
-          click: () => openDirectoryDialog(),
-        })
-      );
-    }
-
-    const recentFilesSubmenu = buildRecentFilesMenu();
-    if (recentFilesSubmenu.length > 0) {
-      fileMenu.submenu.insert(
-        menuIndex++,
-        new MenuItem({
-          label: menuT('Recent Directories'),
-          submenu: recentFilesSubmenu,
-        })
-      );
-    }
-
-    fileMenu.submenu.insert(menuIndex++, new MenuItem({ type: 'separator' }));
-
-    if (shortcuts.focusWindow) {
-      fileMenu.submenu.append(
-        new MenuItem({
-          label: menuT('Focus Goose Window'),
-          accelerator: shortcuts.focusWindow,
-          click() {
-            focusWindow();
-          },
-        })
-      );
-    }
-
-    if (shortcuts.quickLauncher) {
-      fileMenu.submenu.append(
-        new MenuItem({
-          label: menuT('Quick Launcher'),
-          accelerator: shortcuts.quickLauncher,
-          click() {
-            createLauncher();
-          },
-        })
-      );
-    }
-  }
-
-  if (menu) {
-    let windowMenu = menu.items.find((item) => item.label === 'Window');
-
-    if (!windowMenu) {
-      windowMenu = new MenuItem({
-        label: menuT('Window'),
-        submenu: Menu.buildFromTemplate([]),
-      });
-
-      const helpMenuIndex = menu.items.findIndex((item) => item.label === 'Help');
-      if (helpMenuIndex >= 0) {
-        menu.items.splice(helpMenuIndex, 0, windowMenu);
-      } else {
-        menu.items.push(windowMenu);
-      }
-    }
-
-    if (windowMenu.submenu) {
-      if (shortcuts.alwaysOnTop) {
-        windowMenu.submenu.append(
-          new MenuItem({
-            label: menuT('Always on Top'),
-            type: 'checkbox',
-            accelerator: shortcuts.alwaysOnTop,
-            click(menuItem) {
-              const focusedWindow = BrowserWindow.getFocusedWindow();
-              if (focusedWindow) {
-                const isAlwaysOnTop = menuItem.checked;
-
-                if (process.platform === 'darwin') {
-                  focusedWindow.setAlwaysOnTop(isAlwaysOnTop, 'floating');
-                } else {
-                  focusedWindow.setAlwaysOnTop(isAlwaysOnTop);
-                }
-
-                console.log(
-                  `[Main] Set always-on-top to ${isAlwaysOnTop} for window ${focusedWindow.id}`
-                );
-              }
-            },
-          })
-        );
-      }
-    }
-
-    const viewMenu = menu.items.find((item) => item.label === 'View');
-    if (viewMenu?.submenu && shortcuts.toggleNavigation) {
-      viewMenu.submenu.append(new MenuItem({ type: 'separator' }));
-      viewMenu.submenu.append(
-        new MenuItem({
-          label: menuT('Toggle Navigation'),
-          accelerator: shortcuts.toggleNavigation,
-          click() {
-            const focusedWindow = BrowserWindow.getFocusedWindow();
-            if (focusedWindow) {
-              focusedWindow.webContents.send('toggle-navigation');
-            }
-          },
-        })
-      );
-    }
-  }
-
-  // on macOS, the topbar is hidden
-  if (menu && process.platform !== 'darwin') {
-    let helpMenu = menu.items.find((item) => item.label === 'Help');
-
-    // If Help menu doesn't exist, create it and add it to the menu
-    if (!helpMenu) {
-      helpMenu = new MenuItem({
-        label: menuT('Help'),
-        submenu: Menu.buildFromTemplate([]), // Start with an empty submenu
-      });
-      // Find a reasonable place to insert the Help menu, usually near the end
-      const insertIndex = menu.items.length > 0 ? menu.items.length - 1 : 0;
-      menu.items.splice(insertIndex, 0, helpMenu);
-    }
-
-    // Ensure the Help menu has a submenu before appending
-    if (helpMenu.submenu) {
-      // Add a separator before the About item if the submenu is not empty
-      if (helpMenu.submenu.items.length > 0) {
-        helpMenu.submenu.append(new MenuItem({ type: 'separator' }));
-      }
-
-      // Create the About Goose menu item with a submenu
-      const aboutGooseMenuItem = new MenuItem({
-        label: menuT('About Goose'),
-        submenu: Menu.buildFromTemplate([]), // Start with an empty submenu for About
-      });
-
-      // Add the Version menu item (display only) to the About Goose submenu
-      if (aboutGooseMenuItem.submenu) {
-        aboutGooseMenuItem.submenu.append(
-          new MenuItem({
-            label: `Version ${version || app.getVersion()}`,
-            enabled: false,
-          })
-        );
-      }
-
-      helpMenu.submenu.append(aboutGooseMenuItem);
-    }
-  }
-
-  if (menu) {
-    // Translate labels (including Electron's default top-level entries
-    // File/Edit/View/Window/Help and submenu items populated by roles) before
-    // installing the menu. Called last so the lookups above that match on the
-    // English labels still succeed.
-    translateMenuLabels(menu.items);
-    Menu.setApplicationMenu(menu);
-  }
+  buildApplicationMenu();
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {

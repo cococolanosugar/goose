@@ -1964,6 +1964,150 @@
   "mentionPopover.scanningFiles": {
     "defaultMessage": "Scanning files..."
   },
+  "menu.aboutGoose": {
+    "defaultMessage": "About Goose"
+  },
+  "menu.addToDictionary": {
+    "defaultMessage": "Add to dictionary"
+  },
+  "menu.alwaysOnTop": {
+    "defaultMessage": "Always on Top"
+  },
+  "menu.edit": {
+    "defaultMessage": "Edit"
+  },
+  "menu.file": {
+    "defaultMessage": "File"
+  },
+  "menu.find": {
+    "defaultMessage": "Find"
+  },
+  "menu.findNext": {
+    "defaultMessage": "Find Next"
+  },
+  "menu.findPrevious": {
+    "defaultMessage": "Find Previous"
+  },
+  "menu.findWithEllipsis": {
+    "defaultMessage": "Find…"
+  },
+  "menu.focusGooseWindow": {
+    "defaultMessage": "Focus Goose Window"
+  },
+  "menu.help": {
+    "defaultMessage": "Help"
+  },
+  "menu.newChat": {
+    "defaultMessage": "New Chat"
+  },
+  "menu.newChatWindow": {
+    "defaultMessage": "New Chat Window"
+  },
+  "menu.newWindow": {
+    "defaultMessage": "New Window"
+  },
+  "menu.openDirectory": {
+    "defaultMessage": "Open Directory..."
+  },
+  "menu.quickLauncher": {
+    "defaultMessage": "Quick Launcher"
+  },
+  "menu.recentDirectories": {
+    "defaultMessage": "Recent Directories"
+  },
+  "menu.role.close": {
+    "defaultMessage": "Close"
+  },
+  "menu.role.copy": {
+    "defaultMessage": "Copy"
+  },
+  "menu.role.cut": {
+    "defaultMessage": "Cut"
+  },
+  "menu.role.delete": {
+    "defaultMessage": "Delete"
+  },
+  "menu.role.forceReload": {
+    "defaultMessage": "Force Reload"
+  },
+  "menu.role.front": {
+    "defaultMessage": "Bring All to Front"
+  },
+  "menu.role.hide": {
+    "defaultMessage": "Hide Goose"
+  },
+  "menu.role.hideOthers": {
+    "defaultMessage": "Hide Others"
+  },
+  "menu.role.minimize": {
+    "defaultMessage": "Minimize"
+  },
+  "menu.role.paste": {
+    "defaultMessage": "Paste"
+  },
+  "menu.role.pasteAndMatchStyle": {
+    "defaultMessage": "Paste and Match Style"
+  },
+  "menu.role.quit": {
+    "defaultMessage": "Quit"
+  },
+  "menu.role.redo": {
+    "defaultMessage": "Redo"
+  },
+  "menu.role.reload": {
+    "defaultMessage": "Reload"
+  },
+  "menu.role.resetZoom": {
+    "defaultMessage": "Actual Size"
+  },
+  "menu.role.selectAll": {
+    "defaultMessage": "Select All"
+  },
+  "menu.role.services": {
+    "defaultMessage": "Services"
+  },
+  "menu.role.startSpeaking": {
+    "defaultMessage": "Start Speaking"
+  },
+  "menu.role.stopSpeaking": {
+    "defaultMessage": "Stop Speaking"
+  },
+  "menu.role.toggleDevTools": {
+    "defaultMessage": "Toggle Developer Tools"
+  },
+  "menu.role.togglefullscreen": {
+    "defaultMessage": "Toggle Full Screen"
+  },
+  "menu.role.undo": {
+    "defaultMessage": "Undo"
+  },
+  "menu.role.unhide": {
+    "defaultMessage": "Show All"
+  },
+  "menu.role.zoom": {
+    "defaultMessage": "Zoom"
+  },
+  "menu.role.zoomIn": {
+    "defaultMessage": "Zoom In"
+  },
+  "menu.role.zoomOut": {
+    "defaultMessage": "Zoom Out"
+  },
+  "menu.settings": {
+    "defaultMessage": "Settings"
+  },
+  "menu.toggleNavigation": {
+    "defaultMessage": "Toggle Navigation"
+  },
+  "menu.useSelectionForFind": {
+    "defaultMessage": "Use Selection for Find"
+  },
+  "menu.view": {
+    "defaultMessage": "View"
+  },
+  "menu.window": {
+    "defaultMessage": "Window"
+  },
   "messageCopyLink.copied": {
     "defaultMessage": "Copied!"
   },

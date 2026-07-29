@@ -4570,5 +4570,149 @@
   },
   "userMessage.forkSessionTitle": {
     "defaultMessage": "संपादित संदेश के साथ एक नया सत्र बनाएं"
+  },
+  "menu.aboutGoose": {
+    "defaultMessage": "Goose के बारे में"
+  },
+  "menu.addToDictionary": {
+    "defaultMessage": "शब्दकोश में जोड़ें"
+  },
+  "menu.alwaysOnTop": {
+    "defaultMessage": "हमेशा ऊपर"
+  },
+  "menu.edit": {
+    "defaultMessage": "संपादित करें"
+  },
+  "menu.file": {
+    "defaultMessage": "फ़ाइल"
+  },
+  "menu.find": {
+    "defaultMessage": "खोजें"
+  },
+  "menu.findNext": {
+    "defaultMessage": "अगला खोजें"
+  },
+  "menu.findPrevious": {
+    "defaultMessage": "पिछला खोजें"
+  },
+  "menu.findWithEllipsis": {
+    "defaultMessage": "खोजें…"
+  },
+  "menu.focusGooseWindow": {
+    "defaultMessage": "Goose विंडो पर ध्यान दें"
+  },
+  "menu.help": {
+    "defaultMessage": "सहायता"
+  },
+  "menu.newChat": {
+    "defaultMessage": "नई चैट"
+  },
+  "menu.newChatWindow": {
+    "defaultMessage": "नई चैट विंडो"
+  },
+  "menu.newWindow": {
+    "defaultMessage": "नई विंडो"
+  },
+  "menu.openDirectory": {
+    "defaultMessage": "निर्देशिका खोलें..."
+  },
+  "menu.quickLauncher": {
+    "defaultMessage": "क्विक लॉन्चर"
+  },
+  "menu.recentDirectories": {
+    "defaultMessage": "हाल की निर्देशिकाएँ"
+  },
+  "menu.role.close": {
+    "defaultMessage": "बंद करें"
+  },
+  "menu.role.copy": {
+    "defaultMessage": "कॉपी करें"
+  },
+  "menu.role.cut": {
+    "defaultMessage": "कट करें"
+  },
+  "menu.role.delete": {
+    "defaultMessage": "हटाएँ"
+  },
+  "menu.role.forceReload": {
+    "defaultMessage": "पुनः लोड बाध्य करें"
+  },
+  "menu.role.front": {
+    "defaultMessage": "सभी को सामने लाएँ"
+  },
+  "menu.role.hide": {
+    "defaultMessage": "Goose छुपाएँ"
+  },
+  "menu.role.hideOthers": {
+    "defaultMessage": "अन्य छुपाएँ"
+  },
+  "menu.role.minimize": {
+    "defaultMessage": "न्यूनतम करें"
+  },
+  "menu.role.paste": {
+    "defaultMessage": "पेस्ट करें"
+  },
+  "menu.role.quit": {
+    "defaultMessage": "बाहर निकलें"
+  },
+  "menu.role.redo": {
+    "defaultMessage": "पुनः करें"
+  },
+  "menu.role.reload": {
+    "defaultMessage": "पुनः लोड करें"
+  },
+  "menu.role.resetZoom": {
+    "defaultMessage": "वास्तविक आकार"
+  },
+  "menu.role.selectAll": {
+    "defaultMessage": "सभी चुनें"
+  },
+  "menu.role.services": {
+    "defaultMessage": "सेवाएँ"
+  },
+  "menu.role.startSpeaking": {
+    "defaultMessage": "बोलना शुरू करें"
+  },
+  "menu.role.stopSpeaking": {
+    "defaultMessage": "बोलना बंद करें"
+  },
+  "menu.role.toggleDevTools": {
+    "defaultMessage": "डेवलपर टूल टॉगल करें"
+  },
+  "menu.role.togglefullscreen": {
+    "defaultMessage": "फुल स्क्रीन टॉगल करें"
+  },
+  "menu.role.undo": {
+    "defaultMessage": "पूर्ववत करें"
+  },
+  "menu.role.unhide": {
+    "defaultMessage": "सभी दिखाएँ"
+  },
+  "menu.role.zoom": {
+    "defaultMessage": "ज़ूम"
+  },
+  "menu.role.zoomIn": {
+    "defaultMessage": "ज़ूम इन"
+  },
+  "menu.role.zoomOut": {
+    "defaultMessage": "ज़ूम आउट"
+  },
+  "menu.settings": {
+    "defaultMessage": "सेटिंग्स"
+  },
+  "menu.toggleNavigation": {
+    "defaultMessage": "नेविगेशन टॉगल करें"
+  },
+  "menu.useSelectionForFind": {
+    "defaultMessage": "खोज के लिए चयन का उपयोग करें"
+  },
+  "menu.view": {
+    "defaultMessage": "देखें"
+  },
+  "menu.window": {
+    "defaultMessage": "विंडो"
+  },
+  "menu.role.pasteAndMatchStyle": {
+    "defaultMessage": "पेस्ट करें और शैली मिलाएँ"
   }
 }

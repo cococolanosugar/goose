@@ -4570,5 +4570,149 @@
   },
   "userMessage.forkSessionTitle": {
     "defaultMessage": "Crea una nuova sessione con il messaggio modificato"
+  },
+  "menu.aboutGoose": {
+    "defaultMessage": "Informazioni su Goose"
+  },
+  "menu.addToDictionary": {
+    "defaultMessage": "Aggiungi al dizionario"
+  },
+  "menu.alwaysOnTop": {
+    "defaultMessage": "Sempre in primo piano"
+  },
+  "menu.edit": {
+    "defaultMessage": "Modifica"
+  },
+  "menu.file": {
+    "defaultMessage": "File"
+  },
+  "menu.find": {
+    "defaultMessage": "Trova"
+  },
+  "menu.findNext": {
+    "defaultMessage": "Trova successivo"
+  },
+  "menu.findPrevious": {
+    "defaultMessage": "Trova precedente"
+  },
+  "menu.findWithEllipsis": {
+    "defaultMessage": "Trova…"
+  },
+  "menu.focusGooseWindow": {
+    "defaultMessage": "Focus sulla finestra Goose"
+  },
+  "menu.help": {
+    "defaultMessage": "Aiuto"
+  },
+  "menu.newChat": {
+    "defaultMessage": "Nuova chat"
+  },
+  "menu.newChatWindow": {
+    "defaultMessage": "Nuova finestra chat"
+  },
+  "menu.newWindow": {
+    "defaultMessage": "Nuova finestra"
+  },
+  "menu.openDirectory": {
+    "defaultMessage": "Apri directory..."
+  },
+  "menu.quickLauncher": {
+    "defaultMessage": "Avvio rapido"
+  },
+  "menu.recentDirectories": {
+    "defaultMessage": "Directory recenti"
+  },
+  "menu.role.close": {
+    "defaultMessage": "Chiudi"
+  },
+  "menu.role.copy": {
+    "defaultMessage": "Copia"
+  },
+  "menu.role.cut": {
+    "defaultMessage": "Taglia"
+  },
+  "menu.role.delete": {
+    "defaultMessage": "Elimina"
+  },
+  "menu.role.forceReload": {
+    "defaultMessage": "Forza ricarica"
+  },
+  "menu.role.front": {
+    "defaultMessage": "Porta tutto in primo piano"
+  },
+  "menu.role.hide": {
+    "defaultMessage": "Nascondi Goose"
+  },
+  "menu.role.hideOthers": {
+    "defaultMessage": "Nascondi altri"
+  },
+  "menu.role.minimize": {
+    "defaultMessage": "Minimizza"
+  },
+  "menu.role.paste": {
+    "defaultMessage": "Incolla"
+  },
+  "menu.role.quit": {
+    "defaultMessage": "Esci"
+  },
+  "menu.role.redo": {
+    "defaultMessage": "Ripeti"
+  },
+  "menu.role.reload": {
+    "defaultMessage": "Ricarica"
+  },
+  "menu.role.resetZoom": {
+    "defaultMessage": "Dimensioni reali"
+  },
+  "menu.role.selectAll": {
+    "defaultMessage": "Seleziona tutto"
+  },
+  "menu.role.services": {
+    "defaultMessage": "Servizi"
+  },
+  "menu.role.startSpeaking": {
+    "defaultMessage": "Inizia a parlare"
+  },
+  "menu.role.stopSpeaking": {
+    "defaultMessage": "Smetti di parlare"
+  },
+  "menu.role.toggleDevTools": {
+    "defaultMessage": "Attiva/disattiva strumenti di sviluppo"
+  },
+  "menu.role.togglefullscreen": {
+    "defaultMessage": "Attiva/disattiva schermo intero"
+  },
+  "menu.role.undo": {
+    "defaultMessage": "Annulla"
+  },
+  "menu.role.unhide": {
+    "defaultMessage": "Mostra tutto"
+  },
+  "menu.role.zoom": {
+    "defaultMessage": "Zoom"
+  },
+  "menu.role.zoomIn": {
+    "defaultMessage": "Ingrandisci"
+  },
+  "menu.role.zoomOut": {
+    "defaultMessage": "Riduci"
+  },
+  "menu.settings": {
+    "defaultMessage": "Impostazioni"
+  },
+  "menu.toggleNavigation": {
+    "defaultMessage": "Attiva/disattiva navigazione"
+  },
+  "menu.useSelectionForFind": {
+    "defaultMessage": "Usa selezione per trovare"
+  },
+  "menu.view": {
+    "defaultMessage": "Visualizza"
+  },
+  "menu.window": {
+    "defaultMessage": "Finestra"
+  },
+  "menu.role.pasteAndMatchStyle": {
+    "defaultMessage": "Incolla e adatta stile"
   }
 }

@@ -4570,5 +4570,149 @@
   },
   "userMessage.forkSessionTitle": {
     "defaultMessage": "Düzenlenen mesajla yeni bir oturum oluşturun"
+  },
+  "menu.aboutGoose": {
+    "defaultMessage": "Goose Hakkında"
+  },
+  "menu.addToDictionary": {
+    "defaultMessage": "Sözlüğe ekle"
+  },
+  "menu.alwaysOnTop": {
+    "defaultMessage": "Her zaman üstte"
+  },
+  "menu.edit": {
+    "defaultMessage": "Düzenle"
+  },
+  "menu.file": {
+    "defaultMessage": "Dosya"
+  },
+  "menu.find": {
+    "defaultMessage": "Bul"
+  },
+  "menu.findNext": {
+    "defaultMessage": "Sonrakini Bul"
+  },
+  "menu.findPrevious": {
+    "defaultMessage": "Öncekini Bul"
+  },
+  "menu.findWithEllipsis": {
+    "defaultMessage": "Bul…"
+  },
+  "menu.focusGooseWindow": {
+    "defaultMessage": "Goose Penceresine Odaklan"
+  },
+  "menu.help": {
+    "defaultMessage": "Yardım"
+  },
+  "menu.newChat": {
+    "defaultMessage": "Yeni Sohbet"
+  },
+  "menu.newChatWindow": {
+    "defaultMessage": "Yeni Sohbet Penceresi"
+  },
+  "menu.newWindow": {
+    "defaultMessage": "Yeni Pencere"
+  },
+  "menu.openDirectory": {
+    "defaultMessage": "Dizin Aç..."
+  },
+  "menu.quickLauncher": {
+    "defaultMessage": "Hızlı Başlatıcı"
+  },
+  "menu.recentDirectories": {
+    "defaultMessage": "Son Dizinler"
+  },
+  "menu.role.close": {
+    "defaultMessage": "Kapat"
+  },
+  "menu.role.copy": {
+    "defaultMessage": "Kopyala"
+  },
+  "menu.role.cut": {
+    "defaultMessage": "Kes"
+  },
+  "menu.role.delete": {
+    "defaultMessage": "Sil"
+  },
+  "menu.role.forceReload": {
+    "defaultMessage": "Yeniden Yüklemeye Zorla"
+  },
+  "menu.role.front": {
+    "defaultMessage": "Tümünü Öne Getir"
+  },
+  "menu.role.hide": {
+    "defaultMessage": "Goose'u Gizle"
+  },
+  "menu.role.hideOthers": {
+    "defaultMessage": "Diğerlerini Gizle"
+  },
+  "menu.role.minimize": {
+    "defaultMessage": "Küçült"
+  },
+  "menu.role.paste": {
+    "defaultMessage": "Yapıştır"
+  },
+  "menu.role.quit": {
+    "defaultMessage": "Çık"
+  },
+  "menu.role.redo": {
+    "defaultMessage": "Yinele"
+  },
+  "menu.role.reload": {
+    "defaultMessage": "Yeniden Yükle"
+  },
+  "menu.role.resetZoom": {
+    "defaultMessage": "Gerçek Boyut"
+  },
+  "menu.role.selectAll": {
+    "defaultMessage": "Tümünü Seç"
+  },
+  "menu.role.services": {
+    "defaultMessage": "Hizmetler"
+  },
+  "menu.role.startSpeaking": {
+    "defaultMessage": "Konuşmayı Başlat"
+  },
+  "menu.role.stopSpeaking": {
+    "defaultMessage": "Konuşmayı Durdur"
+  },
+  "menu.role.toggleDevTools": {
+    "defaultMessage": "Geliştirici Araçlarını Aç/Kapat"
+  },
+  "menu.role.togglefullscreen": {
+    "defaultMessage": "Tam Ekranı Aç/Kapat"
+  },
+  "menu.role.undo": {
+    "defaultMessage": "Geri Al"
+  },
+  "menu.role.unhide": {
+    "defaultMessage": "Tümünü Göster"
+  },
+  "menu.role.zoom": {
+    "defaultMessage": "Yakınlaştır"
+  },
+  "menu.role.zoomIn": {
+    "defaultMessage": "Yakınlaştır"
+  },
+  "menu.role.zoomOut": {
+    "defaultMessage": "Uzaklaştır"
+  },
+  "menu.settings": {
+    "defaultMessage": "Ayarlar"
+  },
+  "menu.toggleNavigation": {
+    "defaultMessage": "Gezinmeyi Aç/Kapat"
+  },
+  "menu.useSelectionForFind": {
+    "defaultMessage": "Seçimi Aramada Kullan"
+  },
+  "menu.view": {
+    "defaultMessage": "Görünüm"
+  },
+  "menu.window": {
+    "defaultMessage": "Pencere"
+  },
+  "menu.role.pasteAndMatchStyle": {
+    "defaultMessage": "Yapıştır ve Stili Eşle"
   }
 }
